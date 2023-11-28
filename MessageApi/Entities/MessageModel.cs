@@ -14,12 +14,12 @@ namespace MessageAPI.Entities
 
         public MessageModel()
         {
-
+            Id = Guid.NewGuid();
         }
 
-        public MessageModel(Guid id, DateTime sentWent, string text, MessageStatusModel status)
+        public MessageModel(DateTime sentWent, string text, MessageStatusModel status)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             SentWent = sentWent;
             Text = text;
             Status = status;

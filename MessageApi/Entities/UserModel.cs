@@ -15,7 +15,7 @@
             Id = Guid.NewGuid();
         }
 
-        public UserModel(Guid id, string name, long numberCellPhone, string email, string password)
+        public UserModel(string name, long numberCellPhone, string email, string password)
 
         {
             Id = Guid.NewGuid();
