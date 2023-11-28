@@ -50,6 +50,7 @@ namespace MessageAPI.Services.UserService
             }
             var user = await _context.UserModel.FindAsync(NumberCellPhone);
             _context.UserModel.Remove(user);
+
             await _context.SaveChangesAsync();
         }
     }

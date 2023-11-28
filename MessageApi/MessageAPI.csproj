@@ -19,8 +19,4 @@
     <PackageReference Include="Twilio" Version="6.15.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

@@ -1,4 +1,5 @@
 ﻿using MessageAPI.Entities.enums;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace MessageAPI.Entities
@@ -7,7 +8,7 @@ namespace MessageAPI.Entities
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public DateTime SentWent { get; set; }
+        public DateTime SentWent  { get; set; }
         public string Text { get; set; }
         public MessageStatusModel Status { get; set; }
 
