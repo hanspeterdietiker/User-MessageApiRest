@@ -45,12 +45,12 @@ namespace MessageAPI.Services.UserService
         public async Task RemoveAsync(Guid? id)
         {
             var user = await _context.UserModel.FindAsync(id);
+
             if (id == null)
             {
                 throw new NotFoundExcepetion("PLEASE! Inform Id");
             }
             _context.UserModel.Remove(user);
-
             await _context.SaveChangesAsync();
         }
     }

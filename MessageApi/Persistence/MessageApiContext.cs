@@ -11,8 +11,8 @@ namespace MessageAPI.Persistence
             : base(options)
         {
         }
-        public DbSet<UserModel> UserModel { get; set; } = default;
-        public DbSet<MessageModel> MessageModel { get; set; } = default;
-
+        public DbSet<UserModel> UserModel { get; set; } = default!;
+        public DbSet<MessageModel> MessageModel { get; set; } = default!;
+        
     }
 }
