@@ -1,5 +1,4 @@
 ﻿using MessageAPI.Entities;
-using MessageAPI.Persistence;
 using MessageAPI.Services.UserService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,11 +11,11 @@ namespace MessageAPI.Controllers
 
 
         private readonly IUserService _userService;
-        
+
 
         public UserController(IUserService userService)
         {
-            
+
             _userService = userService;
         }
 
@@ -36,13 +35,7 @@ namespace MessageAPI.Controllers
         /*[ValidateAntiForgeryToken]*/
         public async Task<IActionResult> CreateUser(UserModel? user)
         {
-            if (user == null)
-            {
-                return BadRequest("ERROR:Report correctly");
-            }
-
             await _userService.CreateUserAsync(user);
-
             return Created("User registered in the Database", user);
         }
 
