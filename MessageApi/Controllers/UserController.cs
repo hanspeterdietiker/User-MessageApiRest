@@ -41,7 +41,7 @@ namespace MessageAPI.Controllers
             }
 
             await _userService.CreateUserAsync(user);
-            return Created("Usuario cadastrado no Banco de Dados", user);
+            return Created("User registered in the Database", user);
         }
 
         [HttpDelete("{id}")]
