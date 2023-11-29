@@ -7,6 +7,6 @@ namespace MessageAPI.Services.UserService
         Task<UserModel> FindByIdAsync(Guid? id);
         Task CreateUserAsync(UserModel user);
         Task UpdateAsync(UserModel user);
-        Task RemoveAsync(Guid? id);
+        Task RemoveAsync(UserModel user);
     }
 }

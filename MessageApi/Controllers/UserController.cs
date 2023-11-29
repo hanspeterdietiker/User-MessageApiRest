@@ -4,51 +4,47 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MessageAPI.Controllers
 {
-    [Route("api/v1/[controller]")]
     [ApiController]
+    [Route("api/v1/[controller]")]
     public class UserController : ControllerBase
     {
-
 
         private readonly IUserService _userService;
 
 
         public UserController(IUserService userService)
         {
-
             _userService = userService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("searching-user/{id}")]
         public async Task<IActionResult> GetById(Guid? id)
         {
-            if (!id.HasValue)
-            {
-                return BadRequest("ERROR:Invalide Id");
-            }
             var user = await _userService.FindByIdAsync(id);
-
             return Ok(user);
         }
 
-        [HttpPost]
+        [HttpPost("creating-user")]
         /*[ValidateAntiForgeryToken]*/
-        public async Task<IActionResult> CreateUser(UserModel? user)
+        public async Task<IActionResult> CreateUser(UserModel user)
         {
             await _userService.CreateUserAsync(user);
             return Created("User registered in the Database", user);
         }
 
-        [HttpDelete("{id}")]
+        [HttpPut("updating-user/{id}")]
+        /*[ValidateAntiForgeryToken]*/
+        public async Task<IActionResult> UpdateUser(UserModel user)
+        {
+            await _userService.UpdateAsync(user);
+            return Ok(user);
+        }
+
+        [HttpDelete("deleting-user/{id}")]
         public async Task<IActionResult> RemoveUser(Guid? id)
         {
-            if (!id.HasValue)
-            {
-                return BadRequest("ERROR:Invalide Id");
-            }
             await _userService.RemoveAsync(id);
-
-            return NoContent();
+            return Ok("User Deleted");
 
         }
     }

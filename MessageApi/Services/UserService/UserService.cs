@@ -18,7 +18,7 @@ namespace MessageAPI.Services.UserService
         {
             if (id == null)
             {
-                throw new NullException("PLEASE! Inform Id");
+                throw new NotFoundExcepetion("PLEASE! Inform Id");
             }
             return await _context.UserModel.FindAsync(id);
 
@@ -32,10 +32,10 @@ namespace MessageAPI.Services.UserService
 
         public async Task UpdateAsync(UserModel user)
         {
-            bool hasAny = await _context.UserModel.AnyAsync(a => a.NumberCellPhone == user.NumberCellPhone);
+            bool hasAny = await _context.UserModel.AnyAsync(a => a.Id == user.Id);
             if (!hasAny)
             {
-                throw new EntityNotFoundException("Entity Not Found With Number");
+                throw new EntityNotFoundException("Entity Not Found With Id");
             }
             _context.Update(user);
             await _context.SaveChangesAsync();
@@ -44,11 +44,11 @@ namespace MessageAPI.Services.UserService
 
         public async Task RemoveAsync(Guid? id)
         {
+            var user = await _context.UserModel.FindAsync(id);
             if (id == null)
             {
-                throw new NullException("PLEASE! Inform Number");
+                throw new NotFoundExcepetion("PLEASE! Inform Id");
             }
-            var user = await _context.UserModel.FindAsync(id);
             _context.UserModel.Remove(user);
 
             await _context.SaveChangesAsync();
