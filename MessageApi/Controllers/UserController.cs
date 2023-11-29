@@ -52,7 +52,6 @@ namespace MessageAPI.Controllers
                 return BadRequest("ERROR:Invalide Id");
             }
             await _userService.RemoveAsync(id);
-            await _context.SaveChangesAsync();
 
             return NoContent();
 
