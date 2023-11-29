@@ -42,13 +42,13 @@ namespace MessageAPI.Services.UserService
         }
 
 
-        public async Task RemoveAsync(int? NumberCellPhone)
+        public async Task RemoveAsync(Guid? id)
         {
-            if (NumberCellPhone == null)
+            if (id == null)
             {
                 throw new NullException("PLEASE! Inform Number");
             }
-            var user = await _context.UserModel.FindAsync(NumberCellPhone);
+            var user = await _context.UserModel.FindAsync(id);
             _context.UserModel.Remove(user);
 
             await _context.SaveChangesAsync();

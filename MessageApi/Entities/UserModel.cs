@@ -18,7 +18,6 @@
         public UserModel(string name, long numberCellPhone, string email, string password)
 
         {
-            Id = Guid.NewGuid();
             Name = name;
             NumberCellPhone = numberCellPhone;
             Email = email;

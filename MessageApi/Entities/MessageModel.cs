@@ -19,7 +19,6 @@ namespace MessageAPI.Entities
 
         public MessageModel(DateTime sentWent, string text, MessageStatusModel status)
         {
-            Id = Guid.NewGuid();
             SentWent = sentWent;
             Text = text;
             Status = status;
