@@ -12,11 +12,11 @@ namespace MessageAPI.Controllers
 
 
         private readonly IUserService _userService;
-        private readonly MessageApiContext _context;
+        
 
-        public UserController(IUserService userService, MessageApiContext context)
+        public UserController(IUserService userService)
         {
-            _context = context;
+            
             _userService = userService;
         }
 
@@ -28,11 +28,12 @@ namespace MessageAPI.Controllers
                 return BadRequest("ERROR:Invalide Id");
             }
             var user = await _userService.FindByIdAsync(id);
+
             return Ok(user);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        /*[ValidateAntiForgeryToken]*/
         public async Task<IActionResult> CreateUser(UserModel? user)
         {
             if (user == null)
@@ -41,6 +42,7 @@ namespace MessageAPI.Controllers
             }
 
             await _userService.CreateUserAsync(user);
+
             return Created("User registered in the Database", user);
         }
 
