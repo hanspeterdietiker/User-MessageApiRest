@@ -15,13 +15,14 @@
             Id = Guid.NewGuid();
         }
 
-        public UserModel(string name, long numberCellPhone, string email, string password)
-
+        public UserModel(Guid id, string name, long numberCellPhone, string email, string password)
         {
+            Id = id;
             Name = name;
             NumberCellPhone = numberCellPhone;
             Email = email;
             Password = password;
+            
         }
 
         public void SendMessage(MessageModel msg)

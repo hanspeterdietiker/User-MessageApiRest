@@ -14,12 +14,15 @@ namespace MessageAPI.Services.UserService
             _context = context;
         }
 
-        public async Task<UserModel> FindByIdAsync(Guid? id)
+        public async Task<UserModel> FindByIdAsync(Guid id)
         {
-            if (id == null)
+            bool userFound = await _context.UserModel
+                .AnyAsync(a => a.Id == id);
+            if (!userFound)
             {
-                throw new NotFoundExcepetion("PLEASE! Inform Id");
+                throw new NotFoundExcepetion("PLEASE! Inform an User with Correct ID");
             }
+
             return await _context.UserModel.FindAsync(id);
 
         }
@@ -30,28 +33,31 @@ namespace MessageAPI.Services.UserService
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(UserModel user)
+        public async Task UpdateAsync(UserModel request)
         {
-            bool hasAny = await _context.UserModel.AnyAsync(a => a.Id == user.Id);
-            if (!hasAny)
+            bool user = await _context.UserModel
+                .AnyAsync(a => a.Id == request.Id);
+            if (!user)
             {
                 throw new EntityNotFoundException("Entity Not Found With Id");
             }
-            _context.Update(user);
+            _context.Update(request);
             await _context.SaveChangesAsync();
         }
 
 
-        public async Task RemoveAsync(Guid? id)
-        {
-            var user = await _context.UserModel.FindAsync(id);
 
-            if (id == null)
+        public void RemoveUser(Guid id)
+        {
+            var userToRemove = _context.UserModel.FirstOrDefault(a => a.Id == id);
+
+            if (userToRemove == null)
             {
-                throw new NotFoundExcepetion("PLEASE! Inform Id");
+                throw new NotFoundExcepetion("User not found with the provided ID");
             }
-            _context.UserModel.Remove(user);
-            await _context.SaveChangesAsync();
+
+            _context.UserModel.Remove(userToRemove);
+            _context.SaveChanges();
         }
     }
 

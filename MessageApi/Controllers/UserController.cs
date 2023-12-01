@@ -18,7 +18,7 @@ namespace MessageAPI.Controllers
         }
 
         [HttpGet("searching-user/{id}")]
-        public async Task<IActionResult> GetById(Guid? id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             var user = await _userService.FindByIdAsync(id);
             return Ok(user);
@@ -41,9 +41,9 @@ namespace MessageAPI.Controllers
         }
 
         [HttpDelete("deleting-user/{id}")]
-        public async Task<IActionResult> RemoveUser(Guid? id)
+        public IActionResult RemoveUser(Guid id)
         {
-            await _userService.RemoveAsync(id);
+            _userService.RemoveUser(id);
             return Ok("User Deleted");
 
         }
