@@ -20,7 +20,7 @@ namespace MessageAPI.Services.UserService
                 .AnyAsync(a => a.Id == id);
             if (!userFound)
             {
-                throw new NotFoundExcepetion("PLEASE! Inform an User with Correct ID");
+                throw new NotFoundExcepetion("User not found with the provided ID");
             }
 
             return await _context.UserModel.FindAsync(id);
