@@ -24,7 +24,6 @@ namespace MessageAPI.Services.UserService
             }
 
             return await _context.UserModel.FindAsync(id);
-
         }
 
         public async Task CreateUserAsync(UserModel user)
@@ -49,8 +48,8 @@ namespace MessageAPI.Services.UserService
 
         public void RemoveUser(Guid id)
         {
-            var userToRemove = _context.UserModel.FirstOrDefault(a => a.Id == id);
-
+            var userToRemove = _context.UserModel
+                .FirstOrDefault(a => a.Id == id);
             if (userToRemove == null)
             {
                 throw new NotFoundExcepetion("User not found with the provided ID");
