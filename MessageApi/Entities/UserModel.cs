@@ -12,7 +12,7 @@
 
         public UserModel()
         {
-            Id = Guid.NewGuid();
+           
         }
 
         public UserModel(Guid id, string name, long numberCellPhone, string email, string password)

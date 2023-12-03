@@ -2,7 +2,7 @@
 {
     public class UserDto
     {
-        public Guid User { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public long NumberCellPhone { get; set; }
         public string Email { get; set; }
@@ -11,9 +11,9 @@
         {
         }
 
-        public UserDto(Guid user, string name, long numberCellPhone, string email)
+        public UserDto(Guid id, string name, long numberCellPhone, string email)
         {
-            User = user;
+            Id = id;
             Name = name;
             NumberCellPhone = numberCellPhone;
             Email = email;

@@ -1,4 +1,5 @@
-﻿using MessageAPI.Entities;
+﻿using MessageAPI.Dto;
+using MessageAPI.Entities;
 using MessageAPI.Services.UserService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,8 +21,8 @@ namespace MessageAPI.Controllers
         [HttpGet("searching-user/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var user = await _userService.FindByIdAsync(id);
-            return Ok(user);
+           var userDto = await _userService.FindByIdAsync(id);
+            return Ok(userDto);
         }
 
         [HttpPost("creating-user")]
@@ -34,9 +35,9 @@ namespace MessageAPI.Controllers
 
         [HttpPut("updating-user/{id}")]
         /*[ValidateAntiForgeryToken]*/
-        public async Task<IActionResult> UpdateUser(UserModel user)
+        public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UserModel user)
         {
-            await _userService.UpdateAsync(user);
+            await _userService.UpdateAsync(id, user);
             return Ok(user);
         }
 
