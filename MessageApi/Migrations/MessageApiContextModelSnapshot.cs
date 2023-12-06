@@ -22,7 +22,7 @@ namespace MessageAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MessageAPI.Entities.MessageModel", b =>
+            modelBuilder.Entity("MessageAPI.Models.MessageModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace MessageAPI.Migrations
                     b.ToTable("MessageModel");
                 });
 
-            modelBuilder.Entity("MessageAPI.Entities.UserModel", b =>
+            modelBuilder.Entity("MessageAPI.Models.UserModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,14 +77,14 @@ namespace MessageAPI.Migrations
                     b.ToTable("UserModel");
                 });
 
-            modelBuilder.Entity("MessageAPI.Entities.MessageModel", b =>
+            modelBuilder.Entity("MessageAPI.Models.MessageModel", b =>
                 {
-                    b.HasOne("MessageAPI.Entities.UserModel", null)
+                    b.HasOne("MessageAPI.Models.UserModel", null)
                         .WithMany("Message")
                         .HasForeignKey("UserModelId");
                 });
 
-            modelBuilder.Entity("MessageAPI.Entities.UserModel", b =>
+            modelBuilder.Entity("MessageAPI.Models.UserModel", b =>
                 {
                     b.Navigation("Message");
                 });

@@ -19,7 +19,7 @@ namespace MessageAPI.Controllers
         [HttpGet("searching-user/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var userDto = await _userService.FindByIdAsync(id);
+            var userDto = await _userService.FindById(id);
             return Ok(userDto);
         }
 
@@ -27,7 +27,7 @@ namespace MessageAPI.Controllers
         /*[ValidateAntiForgeryToken]*/
         public async Task<IActionResult> CreateUser(UserModel user)
         {
-            await _userService.CreateUserAsync(user);
+            await _userService.CreateUser(user);
             return Created("User registered in the Database", user);
         }
 
@@ -35,7 +35,7 @@ namespace MessageAPI.Controllers
         /*[ValidateAntiForgeryToken]*/
         public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UserModel user)
         {
-            await _userService.UpdateAsync(id, user);
+            await _userService.UpdateUser(id, user);
             return Ok(user);
         }
 

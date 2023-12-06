@@ -16,19 +16,19 @@ namespace MessageAPI.Services
             _context = context;
         }
 
-        public async Task CreateMessageAsync(MessageModel msg)
+        public async Task CreateMessage(MessageModel msg)
         {
             _context.Add(msg);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<MessageDto> FindByIdAsync(Guid id)
+        public async Task<MessageDto> FindById(Guid id)
         {
             {
-                bool msgFound = _context.MessageModel
+                var msgFound = _context.MessageModel
                     .AnyAsync(a => a.Id == id);
 
-                if (!msgFound)
+                if (msgFound == null)
                 {
                     throw new EntityNotFoundException("Message not found with the provided ID");
                 }
@@ -46,7 +46,7 @@ namespace MessageAPI.Services
             }
 
         }
-        public async Task<MessageDto> UpdateAsync(Guid id, MessageModel msg)
+        public async Task<MessageDto> Update(Guid id, MessageModel message)
         {
             var msgFound = await _context.MessageModel.FindAsync(id);
             if (msgFound == null)
@@ -54,22 +54,22 @@ namespace MessageAPI.Services
                 throw new EntityNotFoundException("Entity Not Found With Id");
             }
 
-            msgFound.Text = msg.Text;
-            msgFound.SentWent = msg.SentWent;
+            msgFound.Text = message.Text;
+            msgFound.SentWent = message.SentWent;
 
             var MessageDto = new MessageDto
             {
-                Id = msg.Id,
-                Status = msg.Status,
-                SentWent = msg.SentWent,
-                Text = msg.Text
+                Id = message.Id,
+                Status = message.Status,
+                SentWent = message.SentWent,
+                Text = message.Text
             };
 
             await _context.SaveChangesAsync();
             return MessageDto;
         }
 
-        public void RemoveMessageAsync(Guid id)
+        public void RemoveMessage(Guid id)
         {
             var msgToRemove = _context.MessageModel
                 .FirstOrDefault(a => a.Id == id)

@@ -1,8 +1,10 @@
-﻿namespace MessageAPI.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MessageAPI.Models
 {
     public class UserModel
     {
-
+        [Key]
         public Guid Id { get; set; }
         public string Name { get; set; }
         public long NumberCellPhone { get; set; }

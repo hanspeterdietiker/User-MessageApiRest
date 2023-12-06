@@ -16,7 +16,7 @@ namespace MessageAPI.Services
             _context = context;
         }
 
-        public async Task<UserDto> FindByIdAsync(Guid id)
+        public async Task<UserDto> FindById(Guid id)
         {
             bool userFound = await _context.UserModel
                 .AnyAsync(a => a.Id == id);
@@ -36,13 +36,13 @@ namespace MessageAPI.Services
             return userDto;
         }
 
-        public async Task CreateUserAsync(UserModel user)
+        public async Task CreateUser(UserModel user)
         {
             _context.Add(user);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Guid id, UserModel user)
+        public async Task UpdateUser(Guid id, UserModel user)
         {
             var userFound = await _context.UserModel.FindAsync(id);
 
@@ -59,6 +59,7 @@ namespace MessageAPI.Services
             await _context.SaveChangesAsync();
         }
 
+
         public void RemoveUser(Guid id)
         {
             var userToRemove = _context.UserModel
@@ -66,6 +67,48 @@ namespace MessageAPI.Services
                 ?? throw new EntityNotFoundException("User not found with the provided ID");
 
             _context.UserModel.Remove(userToRemove);
+            _context.SaveChanges();
+        }
+
+        public async Task<MessageDto> UpdateMessageToUser(Guid id, MessageModel message)
+        {
+            var msgFound = await _context.MessageModel.FindAsync(id);
+            if (msgFound == null)
+            {
+                throw new EntityNotFoundException("Entity Not Found With Id");
+            }
+
+            msgFound.Text = message.Text;
+            msgFound.SentWent = message.SentWent;
+
+            var MessageDto = new MessageDto
+            {
+                Id = message.Id,
+                Status = message.Status,
+                SentWent = message.SentWent,
+                Text = message.Text
+            };
+
+            await _context.SaveChangesAsync();
+            return MessageDto;
+        }
+        public async Task AddMessageToUser(Guid id, MessageModel message)
+        {
+            var user = await FindById(id);
+            if (user == null)
+            {
+                throw new EntityNotFoundException("Entity Not Found With Id");
+            }
+            _context.Add(message);
+        }
+
+        public void RemoveMessageToUser(Guid id, MessageModel message)
+        {
+            var msgToRemove = _context.MessageModel
+                .FirstOrDefault(a => a.Id == id)
+                ?? throw new BussinessException("Message not found with the provided ID");
+
+            _context.Remove(msgToRemove);
             _context.SaveChanges();
         }
     }

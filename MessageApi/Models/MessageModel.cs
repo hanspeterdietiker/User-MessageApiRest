@@ -1,10 +1,12 @@
 ﻿using MessageAPI.Entities.enums;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace MessageAPI.Models
 {
     public class MessageModel
     {
+        [Key]
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public DateTime SentWent  { get; set; }

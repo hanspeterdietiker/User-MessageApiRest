@@ -5,9 +5,9 @@ namespace MessageAPI.Interfaces
 {
     public interface IMessageService
     {
-        Task CreateMessageAsync(MessageModel msg);
-        Task<MessageDto> FindByIdAsync(Guid id);
-        Task<MessageDto> UpdateAsync(Guid id, MessageModel message);
-        void RemoveMessageAsync(Guid id);
+        Task CreateMessage(MessageModel msg);
+        Task<MessageDto> FindById(Guid id);
+        Task<MessageDto> Update(Guid id, MessageModel message);
+        void RemoveMessage(Guid id);
     }
 }
