@@ -42,14 +42,14 @@ namespace MessageAPI.Services
                 }
                 var message = await _context.MessageModel.FindAsync(id);
 
-                var MessageDto = new MessageDto
+                var messageDto = new MessageDto
                 {
                     Id = message.Id,
                     Status = message.Status,
                     SentWent = message.SentWent,
                     Text = message.Text
                 };
-                return MessageDto;
+                return messageDto;
 
             }
 
