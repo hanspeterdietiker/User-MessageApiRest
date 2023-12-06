@@ -1,11 +1,12 @@
-﻿using MessageAPI.Entities;
+﻿using MessageAPI.Models;
+using MessageAPI.Interfaces;
 using MessageAPI.Persistence;
-using MessageAPI.Services.exceptions;
+using MessageAPI.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessageAPI.Services.MessageService
+namespace MessageAPI.Services
 {
-    public class MessageService : IMessageService 
+    public class MessageService : IMessageService
     {
         private readonly MessageApiContext _context;
 
@@ -25,7 +26,7 @@ namespace MessageAPI.Services.MessageService
             {
                 if (id == null)
                 {
-                    throw new NullException("PLEASE! Inform Id");
+                    throw new BussinessException("PLEASE! Inform Id");
                 }
                 return await _context.MessageModel.FindAsync(id);
 
@@ -36,7 +37,7 @@ namespace MessageAPI.Services.MessageService
         {
             if (id == null)
             {
-                throw new NullException("PLEASE! Inform Id");
+                throw new BussinessException("PLEASE! Inform Id");
             }
             var msg = await _context.MessageModel.FindAsync(id);
             _context.MessageModel.Remove(msg);

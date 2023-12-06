@@ -1,7 +1,7 @@
 ﻿
+using MessageAPI.Interfaces;
 using MessageAPI.Persistence;
-using MessageAPI.Services.MessageService;
-using MessageAPI.Services.UserService;
+using MessageAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

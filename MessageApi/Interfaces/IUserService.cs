@@ -1,7 +1,7 @@
 ﻿using MessageAPI.Dto;
-using MessageAPI.Entities;
+using MessageAPI.Models;
 
-namespace MessageAPI.Services.UserService
+namespace MessageAPI.Interfaces
 {
     public interface IUserService
     {

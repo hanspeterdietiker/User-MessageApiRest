@@ -1,4 +1,4 @@
-﻿namespace MessageAPI.Entities
+﻿namespace MessageAPI.Models
 {
     public class UserModel
     {

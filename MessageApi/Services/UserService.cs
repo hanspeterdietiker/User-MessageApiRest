@@ -1,10 +1,11 @@
 ﻿using MessageAPI.Dto;
-using MessageAPI.Entities;
+using MessageAPI.Models;
+using MessageAPI.Interfaces;
 using MessageAPI.Persistence;
-using MessageAPI.Services.exceptions;
+using MessageAPI.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
-namespace MessageAPI.Services.UserService
+namespace MessageAPI.Services
 {
     public class UserService : IUserService
     {
@@ -61,7 +62,7 @@ namespace MessageAPI.Services.UserService
         public void RemoveUser(Guid id)
         {
             var userToRemove = _context.UserModel
-                .FirstOrDefault(a => a.Id == id) 
+                .FirstOrDefault(a => a.Id == id)
                 ?? throw new EntityNotFoundException("User not found with the provided ID");
 
             _context.UserModel.Remove(userToRemove);

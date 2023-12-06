@@ -2,7 +2,7 @@
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
-namespace MessageAPI.Services.AuthSmsService
+namespace MessageAPI.Services
 {
     public class AuthSmsService
     {

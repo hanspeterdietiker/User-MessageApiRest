@@ -1,6 +1,5 @@
-﻿using MessageAPI.Dto;
-using MessageAPI.Entities;
-using MessageAPI.Services.UserService;
+﻿using MessageAPI.Models;
+using MessageAPI.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessageAPI.Controllers
@@ -21,7 +20,7 @@ namespace MessageAPI.Controllers
         [HttpGet("searching-user/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-           var userDto = await _userService.FindByIdAsync(id);
+            var userDto = await _userService.FindByIdAsync(id);
             return Ok(userDto);
         }
 
@@ -44,6 +43,7 @@ namespace MessageAPI.Controllers
         [HttpDelete("deleting-user/{id}")]
         public IActionResult RemoveUser(Guid id)
         {
+
             _userService.RemoveUser(id);
             return Ok("User Deleted");
 

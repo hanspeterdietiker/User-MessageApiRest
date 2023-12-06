@@ -1,8 +1,7 @@
 ﻿using MessageAPI.Entities.enums;
-using System.ComponentModel.DataAnnotations;
 
 
-namespace MessageAPI.Entities
+namespace MessageAPI.Models
 {
     public class MessageModel
     {

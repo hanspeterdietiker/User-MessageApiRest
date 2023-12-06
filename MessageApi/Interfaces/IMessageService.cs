@@ -1,6 +1,6 @@
-﻿using MessageAPI.Entities;
+﻿using MessageAPI.Models;
 
-namespace MessageAPI.Services.MessageService
+namespace MessageAPI.Interfaces
 {
     public interface IMessageService
     {
