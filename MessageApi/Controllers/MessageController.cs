@@ -8,6 +8,7 @@ namespace MessageAPI.Controllers
          * updating code with UserService
          * fixing the code
          */
+
     [ApiController]
     [Route("api/[controller]")]
     public class MessageController : ControllerBase
@@ -41,6 +42,7 @@ namespace MessageAPI.Controllers
         /*[ValidateAntiForgeryToken]*/
         public async Task<IActionResult> UpdateMessage(Guid userId, Guid id, [FromBody] MessageModel message)
         {
+            await _userService.UpdateMessageToUser(userId, message);
             await _messageService.Update(id, message);
             return Ok(message);
         }

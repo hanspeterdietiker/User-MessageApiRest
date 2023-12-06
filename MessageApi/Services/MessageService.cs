@@ -18,8 +18,16 @@ namespace MessageAPI.Services
 
         public async Task CreateMessage(MessageModel msg)
         {
+            try
+            {
+
             _context.Add(msg);
             await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException dbEx)
+            {
+                throw new DbUpdateException("Error during database update", dbEx);
+            }
         }
 
         public async Task<MessageDto> FindById(Guid id)
@@ -30,16 +38,16 @@ namespace MessageAPI.Services
 
                 if (msgFound == null)
                 {
-                    throw new EntityNotFoundException("Message not found with the provided ID");
+                    throw new BussinessException("Message not found with the provided ID");
                 }
-                var msg = await _context.MessageModel.FindAsync(id);
+                var message = await _context.MessageModel.FindAsync(id);
 
                 var MessageDto = new MessageDto
                 {
-                    Id = msg.Id,
-                    Status = msg.Status,
-                    SentWent = msg.SentWent,
-                    Text = msg.Text
+                    Id = message.Id,
+                    Status = message.Status,
+                    SentWent = message.SentWent,
+                    Text = message.Text
                 };
                 return MessageDto;
 
@@ -48,35 +56,52 @@ namespace MessageAPI.Services
         }
         public async Task<MessageDto> Update(Guid id, MessageModel message)
         {
-            var msgFound = await _context.MessageModel.FindAsync(id);
-            if (msgFound == null)
+            try
             {
-                throw new EntityNotFoundException("Entity Not Found With Id");
+                var msgFound = await _context.MessageModel.FindAsync(id);
+                if (msgFound == null)
+                {
+                    throw new BussinessException("Entity Not Found With Id");
+                }
+
+                msgFound.Text = message.Text;
+                msgFound.SentWent = message.SentWent;
+
+                var MessageDto = new MessageDto
+                {
+                    Id = message.Id,
+                    Status = message.Status,
+                    SentWent = message.SentWent,
+                    Text = message.Text
+                };
+
+                await _context.SaveChangesAsync();
+                return MessageDto;
             }
-
-            msgFound.Text = message.Text;
-            msgFound.SentWent = message.SentWent;
-
-            var MessageDto = new MessageDto
+            catch (DbUpdateException dbEx)
             {
-                Id = message.Id,
-                Status = message.Status,
-                SentWent = message.SentWent,
-                Text = message.Text
-            };
-
-            await _context.SaveChangesAsync();
-            return MessageDto;
+                throw new DbUpdateException("Error during database update", dbEx);
+            }
+            
+            
         }
 
         public void RemoveMessage(Guid id)
         {
+            try
+            {
             var msgToRemove = _context.MessageModel
                 .FirstOrDefault(a => a.Id == id)
                 ?? throw new BussinessException("Message not found with the provided ID");
 
             _context.MessageModel.Remove(msgToRemove);
             _context.SaveChanges();
+
+            }
+            catch(DbUpdateException dbEx)
+            {
+                throw new DbUpdateException("Error during database update", dbEx);
+            }
         }
     }
 }

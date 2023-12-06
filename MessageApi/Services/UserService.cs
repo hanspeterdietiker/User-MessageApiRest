@@ -1,6 +1,6 @@
 ﻿using MessageAPI.Dto;
-using MessageAPI.Models;
 using MessageAPI.Interfaces;
+using MessageAPI.Models;
 using MessageAPI.Persistence;
 using MessageAPI.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -44,54 +44,49 @@ namespace MessageAPI.Services
 
         public async Task UpdateUser(Guid id, UserModel user)
         {
-            var userFound = await _context.UserModel.FindAsync(id);
-
-            if (userFound == null)
+            try
             {
-                throw new EntityNotFoundException("Entity Not Found With Id");
+                var userFound = await _context.UserModel.FindAsync(id);
+
+                if (userFound == null)
+                {
+                    throw new EntityNotFoundException("Entity Not Found With Id");
+                }
+
+                userFound.Name = user.Name;
+                userFound.Email = user.Email;
+                userFound.Password = user.Password;
+                userFound.NumberCellPhone = user.NumberCellPhone;
+
+                await _context.SaveChangesAsync();
+
+            }
+            catch (DbUpdateException dbEx)
+            {
+                throw new DbUpdateException("Error during database update", dbEx);
             }
 
-            userFound.Name = user.Name;
-            userFound.Email = user.Email;
-            userFound.Password = user.Password;
-            userFound.NumberCellPhone = user.NumberCellPhone;
-
-            await _context.SaveChangesAsync();
         }
 
 
         public void RemoveUser(Guid id)
         {
-            var userToRemove = _context.UserModel
-                .FirstOrDefault(a => a.Id == id)
-                ?? throw new EntityNotFoundException("User not found with the provided ID");
-
-            _context.UserModel.Remove(userToRemove);
-            _context.SaveChanges();
-        }
-
-        public async Task<MessageDto> UpdateMessageToUser(Guid id, MessageModel message)
-        {
-            var msgFound = await _context.MessageModel.FindAsync(id);
-            if (msgFound == null)
+            try
             {
-                throw new EntityNotFoundException("Entity Not Found With Id");
+                var userToRemove = _context.UserModel
+                                .FirstOrDefault(a => a.Id == id)
+                                ?? throw new EntityNotFoundException("User not found with the provided ID");
+
+                _context.UserModel.Remove(userToRemove);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException dbEx)
+            {
+                throw new DbUpdateException("Error during database update", dbEx);
             }
 
-            msgFound.Text = message.Text;
-            msgFound.SentWent = message.SentWent;
-
-            var MessageDto = new MessageDto
-            {
-                Id = message.Id,
-                Status = message.Status,
-                SentWent = message.SentWent,
-                Text = message.Text
-            };
-
-            await _context.SaveChangesAsync();
-            return MessageDto;
         }
+
         public async Task AddMessageToUser(Guid id, MessageModel message)
         {
             var user = await FindById(id);
@@ -100,17 +95,58 @@ namespace MessageAPI.Services
                 throw new EntityNotFoundException("Entity Not Found With Id");
             }
             _context.Add(message);
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
+
+        public async Task<MessageDto> UpdateMessageToUser(Guid id, MessageModel message)
+        {
+            try
+            {
+                var msgFound = await _context.MessageModel.FindAsync(id);
+                if (msgFound == null)
+                {
+                    throw new EntityNotFoundException("Entity Not Found With Id");
+                }
+
+                msgFound.Text = message.Text;
+                msgFound.SentWent = message.SentWent;
+
+                var messageDto = new MessageDto
+                {
+                    Id = message.Id,
+                    Status = message.Status,
+                    SentWent = message.SentWent,
+                    Text = message.Text
+                };
+
+                await _context.SaveChangesAsync();
+                return  messageDto;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                throw new DbUpdateException("Error during database update", dbEx);
+            }
+
+        }
+
+
 
         public void RemoveMessageToUser(Guid id, MessageModel message)
         {
-            var msgToRemove = _context.MessageModel
-                .FirstOrDefault(a => a.Id == id)
-                ?? throw new BussinessException("Message not found with the provided ID");
+            try
+            {
+                var msgToRemove = _context.MessageModel
+                               .FirstOrDefault(a => a.Id == id)
+                               ?? throw new BussinessException("Message not found with the provided ID");
 
-            _context.Remove(msgToRemove);
-            _context.SaveChanges();
+                _context.Remove(msgToRemove);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateException dbEx)
+            {
+                throw new DbUpdateException("Error during database update", dbEx);
+            }
+
         }
     }
 
