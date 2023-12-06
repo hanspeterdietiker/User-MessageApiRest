@@ -1,4 +1,4 @@
-﻿namespace MessageAPI.Services.exceptions
+﻿namespace MessageAPI.Services.Exceptions
 {
     public class EntityNotFoundException : ApplicationException
     {
