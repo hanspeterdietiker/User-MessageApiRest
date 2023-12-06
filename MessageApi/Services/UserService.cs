@@ -100,6 +100,7 @@ namespace MessageAPI.Services
                 throw new EntityNotFoundException("Entity Not Found With Id");
             }
             _context.Add(message);
+           await _context.SaveChangesAsync();
         }
 
         public void RemoveMessageToUser(Guid id, MessageModel message)
