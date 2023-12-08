@@ -10,8 +10,8 @@
 
 ## 🧑 User:
 - Criar Usuario no Banco de Dados (Name, NumberCellPhone, Email, Password, etc...)
-- Atualizar Atributos no Banco de Dados.
 - Listar Usuario por Id.
+- Atualizar Atributos no Banco de Dados.
 - Remover Usuario por Id.
 - Tem 1...* Mensagens.
 - Remove Mensagens.
@@ -19,8 +19,8 @@
 
 ## ✉️ Message:
 - Criar Mensagem no Banco de Dados (Text, SentWent, UserId, etc...)
-- Atualizar Mensagem no Banco de Dados
 - Listar Mensagem por Id.
+- Atualizar Mensagem no Banco de Dados
 - Remover Mensagem por Id.
 - Pertence *...1 Usuario.
 
