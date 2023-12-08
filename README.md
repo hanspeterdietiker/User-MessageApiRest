@@ -18,5 +18,5 @@
 <img width="170" height="30" src ="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" /> 
 
 # 📌 Observações:
-- Sempre estou revisando, refatorando em melhora do codigo
-- Code v1/ ainda está em desenvolvimento
+- Sempre estou revisando, refatorando em melhora do codigo.
+- Code v1/ ainda está em desenvolvimento.
