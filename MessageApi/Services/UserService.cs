@@ -6,7 +6,7 @@ using MessageAPI.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 /**
- * UserService return a Exceptions
+ * UserService return Exceptions
  */
 namespace MessageAPI.Services
 {
