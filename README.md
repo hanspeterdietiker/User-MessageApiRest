@@ -1,4 +1,4 @@
-# User-MessageApiRest
+# User-Message-ApiRest
 
 ## 📂 Instruções :
 - Utilize Microsoft Visual Studio ou equivalentes, tipo JetBrains Rider.
