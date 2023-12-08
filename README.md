@@ -15,7 +15,7 @@
 - Remove Usuario por Id.
 - Tem 1...* Mensagens.
 - Remove Mensagens.
-- //Pretentendo Utilizar API de Autenticação de Número (NumberCellPhone).
+- //Pretentendo Utilizar API de Autenticação de Número (NumberCellPhone).//
 
 ## ✉️ Message:
 - Criar Mensagem no Banco de Dados (Text, SentWent, User, etc...)
