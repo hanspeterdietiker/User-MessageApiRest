@@ -16,7 +16,7 @@
 - Remove Mensagens. 
 
 # ✉️ Message:
-- Criar Mensagem, Registrando no Banco de Dados (Text, SentWent, User, etc...)
+- Criar Mensagem no Banco de Dados (Text, SentWent, User, etc...)
 - Atualiza Mensagem no Banco de Dados
 - Lista Mensagem por Id.
 - Remove Mensagem por Id.
