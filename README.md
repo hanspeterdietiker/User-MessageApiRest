@@ -24,7 +24,7 @@
 - Remove Mensagem por Id.
 - Pertence *...1 Usuario.
 
-#
+
 ## 🔧 Tecnologias utilizadas: 
 <img width="50" height="30" src ="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" />  
 <img width="75" height="30" src ="https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white" /> 
