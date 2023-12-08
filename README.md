@@ -4,6 +4,7 @@
 - Utilize Microsoft Visual Studio ou equivalentes, tipo JetBrains Rider.
 - Utilize .Net 7.0.
 - Vizualize corretamente o Local Host com Porta correta.
+- Dado correto o Local Host + Porta, irá vizualizar o SwaggerIO(Documentação da API).
 
 
 
