@@ -11,17 +11,17 @@
 ## 🧑 User:
 - Criar Usuario no Banco de Dados (Name, NumberCellPhone, Email, Password, etc...)
 - Atualizar Atributos no Banco de Dados.
-- Lista Usuario por Id.
-- Remove Usuario por Id.
+- Listar Usuario por Id.
+- Remover Usuario por Id.
 - Tem 1...* Mensagens.
 - Remove Mensagens.
 - //Pretentendo Utilizar API de Autenticação de Número (NumberCellPhone).//
 
 ## ✉️ Message:
 - Criar Mensagem no Banco de Dados (Text, SentWent, UserId, etc...)
-- Atualiza Mensagem no Banco de Dados
-- Lista Mensagem por Id.
-- Remove Mensagem por Id.
+- Atualizar Mensagem no Banco de Dados
+- Listar Mensagem por Id.
+- Remover Mensagem por Id.
 - Pertence *...1 Usuario.
 
 
