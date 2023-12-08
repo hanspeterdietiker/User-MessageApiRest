@@ -4,10 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MessageAPI.Controllers
 {
-        /**
-         * updating code with UserService
-         * fixing the code
-         */
+
 
     [ApiController]
     [Route("api/[controller]")]
@@ -25,12 +22,12 @@ namespace MessageAPI.Controllers
         [HttpGet("searching-message/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var msgFound = await _messageService.FindById(id);
-            return Ok(msgFound);
+            var messageFound = await _messageService.FindById(id);
+            return Ok(messageFound);
         }
         [HttpPost("creating-message/{userId}")]
         /*[ValidateAntiForgeryToken]*/
-        public async Task<IActionResult> CreateMessage(Guid userId, [FromBody]MessageModel message)
+        public async Task<IActionResult> CreateMessage(Guid userId, [FromBody] MessageModel message)
         {
             await _messageService.CreateMessage(message);
             await _userService.AddMessageToUser(userId, message);
@@ -42,13 +39,15 @@ namespace MessageAPI.Controllers
         /*[ValidateAntiForgeryToken]*/
         public async Task<IActionResult> UpdateMessage(Guid userId, Guid id, [FromBody] MessageModel message)
         {
+
             await _userService.UpdateMessageToUser(userId, message);
             await _messageService.Update(id, message);
             return Ok(message);
         }
         [HttpDelete("deleting-message/{id}")]
-        public IActionResult RemoveMessage(Guid id, Guid userId, [FromBody]MessageModel message)
+        public IActionResult RemoveMessage(Guid id, Guid userId, [FromBody] MessageModel message)
         {
+
             _messageService.RemoveMessage(id);
             _userService.RemoveMessageToUser(userId, message);
 

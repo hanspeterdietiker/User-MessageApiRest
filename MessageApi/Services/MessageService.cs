@@ -5,6 +5,9 @@ using MessageAPI.Persistence;
 using MessageAPI.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
+/**
+ * MessageService return Exceptions
+ */
 namespace MessageAPI.Services
 {
     public class MessageService : IMessageService
@@ -16,12 +19,12 @@ namespace MessageAPI.Services
             _context = context;
         }
 
-        public async Task CreateMessage(MessageModel msg)
+        public async Task CreateMessage(MessageModel message)
         {
             try
             {
 
-            _context.Add(msg);
+            _context.Add(message);
             await _context.SaveChangesAsync();
             }
             catch(DbUpdateException dbEx)
@@ -33,10 +36,10 @@ namespace MessageAPI.Services
         public async Task<MessageDto> FindById(Guid id)
         {
             {
-                var msgFound = _context.MessageModel
+                var messageFound = _context.MessageModel
                     .AnyAsync(a => a.Id == id);
 
-                if (msgFound == null)
+                if (messageFound == null)
                 {
                     throw new BussinessException("Message not found with the provided ID");
                 }
@@ -58,16 +61,16 @@ namespace MessageAPI.Services
         {
             try
             {
-                var msgFound = await _context.MessageModel.FindAsync(id);
-                if (msgFound == null)
+                var messageFound = await _context.MessageModel.FindAsync(id);
+                if (messageFound == null)
                 {
                     throw new BussinessException("Entity Not Found With Id");
                 }
 
-                msgFound.Text = message.Text;
-                msgFound.SentWent = message.SentWent;
+                messageFound.Text = message.Text;
+                messageFound.SentWent = message.SentWent;
 
-                var MessageDto = new MessageDto
+                var messageDto = new MessageDto
                 {
                     Id = message.Id,
                     Status = message.Status,
@@ -76,7 +79,7 @@ namespace MessageAPI.Services
                 };
 
                 await _context.SaveChangesAsync();
-                return MessageDto;
+                return messageDto;
             }
             catch (DbUpdateException dbEx)
             {
@@ -90,11 +93,11 @@ namespace MessageAPI.Services
         {
             try
             {
-            var msgToRemove = _context.MessageModel
+            var messageToRemove = _context.MessageModel
                 .FirstOrDefault(a => a.Id == id)
                 ?? throw new BussinessException("Message not found with the provided ID");
 
-            _context.MessageModel.Remove(msgToRemove);
+            _context.MessageModel.Remove(messageToRemove);
             _context.SaveChanges();
 
             }

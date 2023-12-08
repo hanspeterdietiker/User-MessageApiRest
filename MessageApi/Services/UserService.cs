@@ -5,6 +5,9 @@ using MessageAPI.Persistence;
 using MessageAPI.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
+/**
+ * UserService return a Exceptions
+ */
 namespace MessageAPI.Services
 {
     public class UserService : IUserService
@@ -102,25 +105,26 @@ namespace MessageAPI.Services
         {
             try
             {
-                var msgFound = await _context.MessageModel.FindAsync(id);
-                if (msgFound == null)
+                var messageFound = await _context.MessageModel.FindAsync(id);
+                if (messageFound == null)
                 {
                     throw new EntityNotFoundException("Entity Not Found With Id");
                 }
 
-                msgFound.Text = message.Text;
-                msgFound.SentWent = message.SentWent;
+                messageFound.Text = message.Text;
+                messageFound.SentWent = message.SentWent;
 
                 var messageDto = new MessageDto
                 {
                     Id = message.Id,
+
                     Status = message.Status,
                     SentWent = message.SentWent,
                     Text = message.Text
                 };
 
                 await _context.SaveChangesAsync();
-                return  messageDto;
+                return messageDto;
             }
             catch (DbUpdateException dbEx)
             {
@@ -135,11 +139,11 @@ namespace MessageAPI.Services
         {
             try
             {
-                var msgToRemove = _context.MessageModel
+                var messageToRemove = _context.MessageModel
                                .FirstOrDefault(a => a.Id == id)
                                ?? throw new BussinessException("Message not found with the provided ID");
 
-                _context.Remove(msgToRemove);
+                _context.Remove(messageToRemove);
                 _context.SaveChanges();
             }
             catch (DbUpdateException dbEx)
