@@ -7,7 +7,7 @@
 - Na sua máquina rode a Aplicação e vizualize corretamente o Local Host com Porta certa.
 - Dado correto o Local Host + Porta, irá vizualizar o SwaggerIO(Documentação da API).
 
-# User:
+# 🧑 User:
 - Criar Usuario no Banco de Dados (Name, NumberCellPhone, Email, Password, etc...)
 - Atualizar Atributos no Banco de Dados.
 - Lista Usuario por Id.
@@ -15,7 +15,7 @@
 - Tem 1...* Mensagens.
 - Remove Mensagens. 
 
-# Message:
+# ✉️ Message:
 - Criar Mensagem, Registrando no Banco de Dados (Text, SentWent, User, etc...)
 - Atualiza Mensagem no Banco de Dados
 - Lista Mensagem por Id.
