@@ -18,7 +18,7 @@
 - //Pretentendo Utilizar API de Autenticação de Número (NumberCellPhone).//
 
 ## ✉️ Message:
-- Criar Mensagem no Banco de Dados (Text, SentWent, User, etc...)
+- Criar Mensagem no Banco de Dados (Text, SentWent, UserId, etc...)
 - Atualiza Mensagem no Banco de Dados
 - Lista Mensagem por Id.
 - Remove Mensagem por Id.
