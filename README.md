@@ -2,7 +2,7 @@
 
 ## 📂 Instruções :
 - Utilize Microsoft Visual Studio ou equivalentes, tipo JetBrains Rider.
-- Instale .Net 7.0.
+- Instale .NET 7.0
 - Instale o ASP.NET CORE.
 
 ## 🚀 Rodando o BackEnd localmente:
