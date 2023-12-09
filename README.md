@@ -1,9 +1,9 @@
 # User-Message-ApiRest
 
 ## 📂 Instruções :
-- Utilize Microsoft Visual Studio ou equivalentes, tipo JetBrains Rider.
-- Instale .NET 7.0
-- Instale o ASP.NET CORE.
+- Utilize **Microsoft Visual Studio** ou equivalentes, tipo JetBrains Rider.
+- Instale **.NET 7.0**
+- Instale o **ASP.NET CORE.**
 
 ## 🚀 Rodando o BackEnd localmente:
 - Na sua máquina rode a Aplicação e vizualize corretamente o Local Host com Porta certa.
