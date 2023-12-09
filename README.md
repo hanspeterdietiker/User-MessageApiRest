@@ -6,8 +6,8 @@
 - Instale o **ASP.NET CORE.**
 
 ## 🚀 Rodando o BackEnd localmente:
-- Na sua máquina rode a Aplicação e vizualize corretamente o Local Host com Porta certa.
-- Dado correto o Local Host + Porta, irá vizualizar o SwaggerIO(Documentação da API).
+- Na sua máquina rode a Aplicação e vizualize corretamente o **Local Host** com **Porta** certa.
+- Dado correto o **Local Host** + **Porta**, irá vizualizar o SwaggerIO(Documentação da API).
 - Faça testes em "Try it out".
 
 ## 🧑 User:
