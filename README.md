@@ -4,9 +4,11 @@
 - Utilize Microsoft Visual Studio ou equivalentes, tipo JetBrains Rider.
 - Instale .Net 7.0.
 - Instale o ASP.NET CORE
+
+## 🚀 Rodando Back End localmente:
 - Na sua máquina rode a Aplicação e vizualize corretamente o Local Host com Porta certa.
 - Dado correto o Local Host + Porta, irá vizualizar o SwaggerIO(Documentação da API).
-- Faça testes em "Try it out"
+- Faça testes em "Try it out".
 
 ## 🧑 User:
 - Criar Usuario no Banco de Dados (Name, NumberCellPhone, Email, Password, etc...)
@@ -31,6 +33,5 @@
 - <img width="170" height="30" src ="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" /> 
 
 ## 📌 Observações:
-Sempre estou revisando, refatorando em melhora do codigo.
-
-Code v1/ ainda está em desenvolvimento.
+- Sempre estou revisando, refatorando em melhora do codigo.
+- Code v1/ ainda está em desenvolvimento.
