@@ -3,7 +3,7 @@
 ## 📂 Instruções :
 - Utilize Microsoft Visual Studio ou equivalentes, tipo JetBrains Rider.
 - Instale .Net 7.0.
-- Instale o ASP.NET CORE
+- Instale o ASP.NET CORE.
 
 ## 🚀 Rodando Back End localmente:
 - Na sua máquina rode a Aplicação e vizualize corretamente o Local Host com Porta certa.
