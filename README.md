@@ -1,7 +1,7 @@
 # User-Message-ApiRest
 
 ## 📂 Instruções :
-- Utilize **Microsoft Visual Studio** ou equivalentes, tipo JetBrains Rider.
+- Utilize **Microsoft Visual Studio** ou equivalentes, tipo **JetBrains Rider**.
 - Instale **.NET 7.0**
 - Instale o **ASP.NET CORE.**
 
