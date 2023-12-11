@@ -38,7 +38,8 @@ var message = MessageResource.Create(
     to: new Twilio.Types.PhoneNumber("+XXXXXXXXXXXXXXXX"));
 
 /*
- * put your number above (+XXXXXXX...)
+ * in "from:" put your Twilio number.
+ * in "to:" put your REAL number above (+XXXXXXX...)
  */
 
 Console.WriteLine(message.Status);
