@@ -9,7 +9,12 @@
 - Na sua máquina rode a Aplicação e vizualize corretamente o **Local Host** com **Porta** certa.
 - Dado correto o **Local Host** + **Porta**, irá vizualizar o SwaggerIO(Documentação da API).
 - Faça testes em "Try it out".
-
+  
+## 🔎 Twilio API:
+-  Para utilizar a API, voce deve ter uma conta cadastrada no Twilio.
+-  Dentro de "Program.cs" anotei comentarios para auxiliar na utilização da API.
+-  Ainda estou implementando o serviço do Twilio.
+   
 ## 🧑 User:
 - Criar Usuario no Banco de Dados (Name, NumberCellPhone, Email, Password, etc...)
 - Listar Usuario por Id.
@@ -17,7 +22,7 @@
 - Remover Usuario por Id.
 - Tem 1...* Mensagens.
 - Remove Mensagens.
-- Pretendo Utilizar API(Twilio) de Auth do NumberCellPhone.
+
 
 ## ✉️ Message:
 - Criar Mensagem no Banco de Dados (Text, SentWent, UserId, etc...)
