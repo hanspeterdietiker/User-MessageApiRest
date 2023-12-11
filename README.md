@@ -11,8 +11,8 @@
 - Faça testes em "Try it out".
   
 ## 🔎 Twilio API:
--  Para utilizar a API, voce deve ter uma conta cadastrada no Twilio.
--  Dentro de "Program.cs" anotei comentarios para auxiliar na utilização da API.
+-  Para utilizar a API, voce deve ter uma conta **cadastrada** no **Twilio**.
+-  Dentro de "**Program.cs**" anotei comentarios para auxiliar na utilização da API.
 -  Ainda estou implementando o serviço do Twilio.
    
 ## 🧑 User:
