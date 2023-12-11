@@ -7,7 +7,7 @@ namespace MessageAPI.Controllers
 
 
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class MessageController : ControllerBase
     {
         private readonly IMessageService _messageService;
